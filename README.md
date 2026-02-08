@@ -50,6 +50,8 @@ Running `npx ai-skills-sync` resolves which skills apply to the current project 
 
 ### Managing Skills
 
+Run `npx ai-skills-sync` in any project to fetch your configured skills and place them where your agents can use them:
+
 ```bash
 # Sync skills for the current project
 npx ai-skills-sync
