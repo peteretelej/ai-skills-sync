@@ -1,8 +1,8 @@
 {
   "name": "ai-skills-sync",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "type": "module",
-  "description": "Per-project AI skill routing for coding agents",
+  "description": "AI skills that activate based on your project, so your agent's context goes to what matters",
   "bin": {
     "ai-skills-sync": "dist/cli.js"
   },
