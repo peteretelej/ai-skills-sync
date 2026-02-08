@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "global": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/SkillRef" }
+    },
+    "projects": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "$ref": "#/definitions/SkillRef" }
+      }
+    },
+    "conditional": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "when": { "type": "string" },
+          "skills": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/SkillRef" }
+          }
+        },
+        "required": ["when", "skills"]
+      }
+    }
+  },
+  "definitions": {
+    "SkillRef": {
+      "type": "object",
+      "properties": {
+        "source": { "type": "string" },
+        "path": { "type": "string" }
+      },
+      "required": ["source"]
+    }
+  }
+}
