@@ -1,42 +1,109 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ai-skills-sync configuration",
+  "description": "Configuration file for ai-skills-sync, a per-project AI skill routing tool for coding agents.",
   "type": "object",
   "properties": {
-    "$schema": { "type": "string" },
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema URL for editor validation and autocomplete."
+    },
     "global": {
       "type": "array",
-      "items": { "$ref": "#/definitions/SkillRef" }
+      "description": "Skills synced to every project. Use for universally useful skills like TDD or debugging.",
+      "items": { "$ref": "#/definitions/SkillRef" },
+      "examples": [
+        [
+          { "source": "obra/tdd" },
+          { "source": "obra/systematic-debugging" }
+        ]
+      ]
     },
     "projects": {
       "type": "object",
+      "description": "Project-specific skills, keyed by absolute project root path (supports ~ for home directory). Only synced when running from the matching project.",
       "additionalProperties": {
         "type": "array",
+        "description": "Skills for this project directory.",
         "items": { "$ref": "#/definitions/SkillRef" }
-      }
+      },
+      "examples": [
+        {
+          "~/work/platform-services": [
+            { "source": "microsoft/skills", "path": ".github/skills/azure-cosmos-db-py" },
+            { "source": "sentry/code-review" }
+          ],
+          "~/projects/acme-dashboard": [
+            { "source": "vercel/react-best-practices" }
+          ]
+        }
+      ]
     },
     "conditional": {
       "type": "array",
+      "description": "Skills auto-activated when files matching a glob pattern exist in the project. Removed automatically when the pattern no longer matches.",
       "items": {
         "type": "object",
+        "description": "A conditional rule: activates skills when the glob pattern matches files in the project.",
         "properties": {
-          "when": { "type": "string" },
+          "when": {
+            "type": "string",
+            "description": "Glob pattern to match against project files (e.g. \"**/*.tsx\", \"*.tf\"). Scans up to 3 levels deep, ignoring node_modules, .git, dist, and other build artifacts."
+          },
           "skills": {
             "type": "array",
+            "description": "Skills to activate when the glob pattern matches.",
             "items": { "$ref": "#/definitions/SkillRef" }
           }
         },
         "required": ["when", "skills"]
-      }
+      },
+      "examples": [
+        [
+          {
+            "when": "**/*.tsx",
+            "skills": [{ "source": "vercel/react-best-practices" }]
+          },
+          {
+            "when": "*.tf",
+            "skills": [{ "source": "hashicorp/terraform-patterns" }]
+          }
+        ]
+      ]
     }
   },
   "definitions": {
     "SkillRef": {
       "type": "object",
+      "description": "A reference to a skill. Points to a GitHub repository or a local directory.",
       "properties": {
-        "source": { "type": "string" },
-        "path": { "type": "string" }
+        "source": {
+          "type": "string",
+          "description": "Skill source: \"owner/repo\" for GitHub (optionally with @ref for version pinning), or \"local\" for filesystem skills.",
+          "pattern": "^(local|[a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+(@[a-zA-Z0-9_./-]+)?)$",
+          "examples": [
+            "obra/tdd",
+            "microsoft/skills@main",
+            "obra/tdd@v1.2",
+            "local"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "description": "For GitHub sources: subpath within the repo (e.g. monorepo skill directory). For local sources: absolute or ~-relative path to the skill directory.",
+          "examples": [
+            ".github/skills/azure-cosmos-db-py",
+            "~/my-skills/custom"
+          ]
+        }
       },
-      "required": ["source"]
+      "required": ["source"],
+      "if": {
+        "properties": { "source": { "const": "local" } }
+      },
+      "then": {
+        "required": ["source", "path"]
+      }
     }
   }
 }
