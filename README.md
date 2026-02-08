@@ -5,19 +5,13 @@
 [![npm version](https://img.shields.io/npm/v/ai-skills-sync)](https://www.npmjs.com/package/ai-skills-sync)
 [![license](https://img.shields.io/npm/l/ai-skills-sync)](./LICENSE)
 
----
+Every installed [AI skill](https://agentskills.io/specification) competes for your agent's limited context window. Install too many globally, and relevant skills get crowded out by irrelevant ones. As more companies ship skills to replace their APIs and docs, this only gets worse.
 
-The AI skills ecosystem is growing fast. Hundreds of skills are available for OpenCode, Claude Code, GitHub Copilot, Cursor, and other agents. But installing them all creates a real problem: **context pollution**.
+`ai-skills-sync` gives you one config file that controls which skills are active where:
 
-Every installed skill competes for your agent's limited context budget. Claude Code, for example, allocates roughly 2% of its context window to skill descriptions. With 40 skills installed globally, each one gets a sliver of attention, and the agent's semantic reasoning has to guess which ones matter. The result: relevant skills get crowded out by irrelevant ones, and the agent's output quality drops.
-
-`ai-skills-sync` fixes this with a single config file that controls which skills are active where:
-
-- **Global skills** sync to every project (e.g., TDD, debugging)
-- **Project-specific skills** only appear in the repos that need them
-- **Conditional skills** auto-activate based on your files - React skills appear when `.tsx` files exist, Terraform skills when `.tf` files exist, and they're cleaned up when those files are removed
-
-Your agent gets exactly the skills it needs for the current codebase. Nothing more, nothing less.
+- **Global** - skills synced to every project (e.g., TDD, debugging)
+- **Project-specific** - skills that only appear in the repos that need them
+- **Conditional** - skills that auto-activate based on your files (React skills when `.tsx` exists, Terraform skills when `.tf` exists)
 
 ## Quick Start
 
