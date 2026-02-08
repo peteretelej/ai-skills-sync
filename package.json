@@ -1,0 +1,35 @@
+{
+  "name": "ai-skills-sync",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Per-project AI skill routing for coding agents",
+  "bin": {
+    "ai-skills-sync": "dist/cli.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "dist",
+    "schema.json"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx watch src/cli.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^8.2.0",
+    "commander": "^14.0.3",
+    "env-paths": "^4.0.0",
+    "execa": "^9.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.2",
+    "tsup": "^8.5.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}
