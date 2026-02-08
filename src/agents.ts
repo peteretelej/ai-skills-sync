@@ -8,6 +8,8 @@ import type { AgentType, AgentDir } from "./types.js";
 import * as logger from "./logger.js";
 
 const AGENT_DIRS: { type: AgentType; relative: string }[] = [
+  { type: "agents", relative: ".agents/skills" },
+  { type: "opencode", relative: ".opencode/skills" },
   { type: "claude", relative: ".claude/skills" },
   { type: "copilot", relative: ".github/skills" },
   { type: "cursor", relative: ".cursor/skills" },

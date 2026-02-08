@@ -72,7 +72,7 @@ async function createSkillSource(
 // Helper: set up agent dirs
 async function createAgentDirs(
   projectRoot: string,
-  types: Array<"claude" | "copilot" | "cursor"> = ["claude"],
+  types: Array<"opencode" | "claude" | "copilot" | "cursor" | "agents"> = ["claude"],
 ): Promise<AgentDir[]> {
   const dirs: AgentDir[] = [];
   const relPaths: Record<string, string> = {

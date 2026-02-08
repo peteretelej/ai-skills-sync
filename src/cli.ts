@@ -32,8 +32,8 @@ const program = new Command();
 
 program
   .name("ai-skills-sync")
-  .description("Per-project AI skill routing for coding agents")
-  .version("1.0.0")
+  .description("AI skills that activate based on your project")
+  .version("0.1.1")
   .option("--dry-run", "Preview sync without writing files")
   .option("--no-color", "Disable color output")
   .action(async (opts: { dryRun?: boolean }) => {
@@ -48,7 +48,7 @@ program
       }
 
       const projectName = path.basename(projectRoot);
-      logger.header(`ai-skills-sync v1.0.0 - ${projectName}`);
+      logger.header(`ai-skills-sync v0.1.1 - ${projectName}`);
 
       logger.info("  Resolving skills...");
       const resolvedSkills = await resolveSkills(config, projectRoot);

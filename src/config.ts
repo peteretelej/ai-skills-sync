@@ -120,9 +120,9 @@ export async function ensureConfig(): Promise<Config> {
   await saveConfig(config);
   logger.success("\n  Config created.\n");
   logger.info("  Next steps:");
-  logger.dim("    ai-skills-sync add obra/tdd              Add a skill globally");
+  logger.dim("    ai-skills-sync add anthropics/skills --skill frontend-design");
   logger.dim(
-    "    ai-skills-sync add obra/tdd --project    Add to this project only",
+    "    ai-skills-sync add supabase/agent-skills --project",
   );
   logger.dim(
     "    ai-skills-sync list                      Show active skills\n",

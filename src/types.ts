@@ -108,7 +108,7 @@ export interface ResolvedSkill {
   installName: string;
 }
 
-export type AgentType = "claude" | "copilot" | "cursor";
+export type AgentType = "opencode" | "claude" | "copilot" | "cursor" | "agents";
 
 export interface AgentDir {
   type: AgentType;
