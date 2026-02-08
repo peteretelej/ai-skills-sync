@@ -4,7 +4,7 @@
 
 [![npm version](https://img.shields.io/npm/v/ai-skills-sync)](https://www.npmjs.com/package/ai-skills-sync)
 [![CI](https://github.com/peteretelej/ai-skills-sync/actions/workflows/ci.yml/badge.svg)](https://github.com/peteretelej/ai-skills-sync/actions/workflows/ci.yml)
-[![license](https://img.shields.io/npm/l/ai-skills-sync)](./LICENSE)
+[![license](https://img.shields.io/npm/l/ai-skills-sync?style=flat)](./LICENSE)
 
 Every installed [AI skill](https://agentskills.io/specification) competes for your agent's limited context window. Install too many globally, and relevant skills get crowded out by irrelevant ones. As more companies ship skills to replace their APIs and docs, this only gets worse.
 
