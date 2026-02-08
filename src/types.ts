@@ -88,6 +88,7 @@ export interface SyncState {
 
 export interface ProjectState {
   skills: Record<string, InstalledSkill>;
+  gitignoreSuggested?: boolean;
 }
 
 export interface InstalledSkill {
