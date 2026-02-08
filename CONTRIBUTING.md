@@ -74,6 +74,20 @@ npx vitest
 3. Run `npm test` and `npm run typecheck` to verify
 4. Submit a PR with a clear description of what changed and why
 
+## Releasing
+
+Releases are published to npm automatically via GitHub Actions when a version tag is pushed.
+
+```bash
+# 1. Bump version in package.json
+npm version patch   # or minor / major
+
+# 2. Push the commit and tag
+git push && git push --tags
+```
+
+This triggers the `publish.yml` workflow, which builds, tests, and publishes to npm using OIDC trusted publishing (no tokens needed).
+
 ## Reporting Issues
 
 Found a bug or have a feature request? [Open an issue](https://github.com/peteretelej/ai-skills-sync/issues).
