@@ -17,7 +17,13 @@ Every installed [AI skill](https://agentskills.io/specification) competes for yo
 ## Quick Start
 
 ```bash
-# Run in any project directory - creates config on first run
+# Install a skill to the current project (creates config on first run)
+npx ai-skills-sync add remotion-dev/skills --skill remotion-best-practices --project
+
+# Or add a global skill (synced to every project)
+npx ai-skills-sync add anthropics/skills --skill frontend-design
+
+# Sync/re-sync skills for the current project
 npx ai-skills-sync
 ```
 
