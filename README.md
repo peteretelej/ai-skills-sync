@@ -6,7 +6,7 @@
 [![CI](https://github.com/peteretelej/ai-skills-sync/actions/workflows/ci.yml/badge.svg)](https://github.com/peteretelej/ai-skills-sync/actions/workflows/ci.yml)
 [![license](https://img.shields.io/npm/l/ai-skills-sync?style=flat)](./LICENSE)
 
-Every installed [AI skill](https://agentskills.io/specification) competes for your agent's limited context window. Install too many globally, and relevant skills get crowded out by irrelevant ones. As more companies ship skills to replace their APIs and docs, this only gets worse.
+Every installed [AI skill](https://agentskills.io/specification) competes for your agent's limited context window. Install too many globally, and relevant skills get crowded out by irrelevant ones. As more companies ship skills to replace their APIs and docs, this only gets worse. And if you're pulling skills from marketplaces with [gameable download counts and hidden instruction files](https://snyk.io/articles/clawdhub-malicious-campaign-ai-agent-skills/), you're also taking on supply chain risk every time you install one.
 
 `ai-skills-sync` gives you one config file that controls which skills are active where:
 
